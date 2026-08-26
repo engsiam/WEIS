@@ -90,7 +90,8 @@ function MobileMenuInner({
         }}
       >
         <div className="flex items-center justify-between border-b border-line px-5 py-4">
-          <Logo tone="light" />
+          {/* <Logo tone="light" /> */}
+           <img src="/logo.png" alt="WEIS Logo" className="h-30 w-auto" />
           <button
             type="button"
             onClick={onClose}

@@ -40,7 +40,8 @@ export function Header() {
             )}
             aria-label="WEIS — back to top"
           >
-            <Logo tone={solid ? "light" : "dark"} />
+            {/* <Logo tone={solid ? "light" : "dark"} /> */}
+            <img src="/logo.png" alt="WEIS Logo" className="h-35 w-auto" />
           </button>
 
           <nav className="hidden items-center gap-7 lg:flex">
