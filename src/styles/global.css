@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Brand · dark (navy) ───────────────────────────── */
+  --color-midnight: #060f1f;
+  --color-navy: #0b1d3a;
+  --color-navy-raised: #12294d;
+  --color-royal: #1d4ed8;
+  --color-royal-soft: #3b82f6;
+
+  /* ── Brand · red (WEIS crimson) ────────────────────── */
+  --color-crimson: #d81f2a;
+  --color-crimson-deep: #a80f1c;
+  --color-crimson-soft: #f2545c;
+
+  /* ── Accent · gold ─────────────────────────────────── */
+  --color-gold: #f2b705;
+  --color-gold-soft: #fbcf3b;
+  --color-amber: #f59e0b;
+
+  /* ── Neutrals ──────────────────────────────────────── */
+  --color-cloud: #f4f6fb;
+  --color-paper: #ffffff;
+  --color-ink: #0e1729;
+  --color-slate: #4a5568;
+  --color-line: #e5e9f1;
+  --color-mist: #b9c4da;
+  --color-mist-dim: #8194b5;
+
+  /* ── Type ──────────────────────────────────────────── */
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Elevation ─────────────────────────────────────── */
+  --shadow-panel: 0 30px 60px -30px rgb(6 15 31 / 0.5);
+  --shadow-card: 0 18px 44px -24px rgb(11 29 58 / 0.32);
+  --shadow-lift: 0 24px 50px -28px rgb(11 29 58 / 0.45);
+
+  /* ── Motion ────────────────────────────────────────── */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-marquee-slow: marquee 64s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-cloud font-sans text-ink antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--color-gold) 32%, transparent);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-crimson);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Dotted "world map" texture for dark hero / bands. */
+.world-dots {
+  background-image: radial-gradient(
+    rgb(255 255 255 / 0.08) 1.3px,
+    transparent 1.4px
+  );
+  background-size: 26px 26px;
+}
+
+/* Fine grid used behind dark sections. */
+.grid-lines {
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      rgb(185 196 218 / 0.05) 0 1px,
+      transparent 1px 92px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgb(185 196 218 / 0.04) 0 1px,
+      transparent 1px 92px
+    );
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.pause-on-hover:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-slow {
+    animation: none !important;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none" role="img" aria-label="WEIS — Your No.1 Gateway to Global Opportunities">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0b1d3a" />
+      <stop offset="1" stop-color="#060f1f" />
+    </linearGradient>
+    <linearGradient id="badge" x1="80" y1="70" x2="176" y2="166" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12294d" />
+      <stop offset="1" stop-color="#0b1d3a" />
+    </linearGradient>
+    <radialGradient id="glowCrimson" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 600) rotate(-45) scale(520)">
+      <stop stop-color="#d81f2a" stop-opacity="0.5" />
+      <stop offset="1" stop-color="#d81f2a" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowGold" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1120 60) rotate(135) scale(480)">
+      <stop stop-color="#f2b705" stop-opacity="0.32" />
+      <stop offset="1" stop-color="#f2b705" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="#3b82f6" fill-opacity="0.16" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#dots)" />
+  <rect width="1200" height="630" fill="url(#glowCrimson)" />
+  <rect width="1200" height="630" fill="url(#glowGold)" />
+
+  <!-- Brand lockup -->
+  <g transform="translate(80 68)">
+    <rect x="0" y="0" width="96" height="96" rx="26" fill="url(#badge)" />
+    <rect x="0.75" y="0.75" width="94.5" height="94.5" rx="25.25" stroke="#1d4ed8" stroke-opacity="0.35" />
+    <g transform="translate(4 6)">
+      <circle cx="44" cy="52" r="21" stroke="#b9c4da" stroke-width="2.2" />
+      <ellipse cx="44" cy="52" rx="8" ry="21" stroke="#b9c4da" stroke-width="1.7" />
+      <path d="M24 52h40" stroke="#b9c4da" stroke-width="1.7" />
+      <path d="M27 42h34M27 62h34" stroke="#b9c4da" stroke-width="1.4" opacity="0.6" />
+      <path d="M44 18 L79 32 L44 46 L9 32 Z" fill="#f2b705" />
+      <path d="M28 38 L60 38 L60 49 Q44 56 28 49 Z" fill="#d81f2a" />
+      <path d="M79 32 L79 54" stroke="#fbcf3b" stroke-width="2.6" stroke-linecap="round" />
+      <circle cx="79" cy="57" r="3.4" fill="#fbcf3b" />
+    </g>
+    <text x="120" y="46" font-family="'Sora','Segoe UI',system-ui,sans-serif" font-size="46" font-weight="800" fill="#ffffff" letter-spacing="1">WEIS</text>
+    <text x="122" y="76" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" font-size="15" font-weight="600" fill="#b9c4da" letter-spacing="3.5">STUDY · WORK · MIGRATE</text>
+  </g>
+
+  <!-- Eyebrow pill -->
+  <g transform="translate(80 250)">
+    <rect x="0" y="0" width="300" height="42" rx="21" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.16" />
+    <circle cx="24" cy="21" r="4" fill="#f2545c" />
+    <text x="40" y="27" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" font-size="15" font-weight="700" fill="#fbcf3b" letter-spacing="2">100+ COUNTRIES · SINCE DAY ONE</text>
+  </g>
+
+  <!-- Headline -->
+  <text x="78" y="360" font-family="'Sora','Segoe UI',system-ui,sans-serif" font-size="66" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Your No.1 gateway to</text>
+  <text x="78" y="434" font-family="'Sora','Segoe UI',system-ui,sans-serif" font-size="66" font-weight="800" letter-spacing="-0.5">
+    <tspan fill="#f2545c">global</tspan><tspan fill="#ffffff"> </tspan><tspan fill="#fbcf3b">opportunities</tspan>
+  </text>
+
+  <!-- Sub -->
+  <text x="80" y="486" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" font-size="25" font-weight="500" fill="#b9c4da">Study abroad · Work visas · Migration &amp; PR · Tours — premium guidance, at minimal cost.</text>
+
+  <!-- CTA + contact row -->
+  <g transform="translate(80 536)">
+    <rect x="0" y="0" width="270" height="58" rx="14" fill="#d81f2a" />
+    <text x="135" y="37" text-anchor="middle" font-family="'Sora','Segoe UI',system-ui,sans-serif" font-size="21" font-weight="700" fill="#ffffff">Free Eligibility Check</text>
+  </g>
+  <text x="378" y="574" font-family="'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif" font-size="19" font-weight="600" fill="#8194b5">weisbd.com   ·   Gulshan-1, Dhaka   ·   01832-166151</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" role="img" aria-label="WEIS">
+  <defs>
+    <linearGradient id="badge" x1="4" y1="4" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#12294d" />
+      <stop offset="1" stop-color="#0b1d3a" />
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="40" height="40" rx="12" fill="url(#badge)" />
+  <rect x="2.5" y="2.5" width="39" height="39" rx="11.5" stroke="#1d4ed8" stroke-opacity="0.3" />
+  <!-- mortarboard -->
+  <path d="M22 12 L36 17.5 L22 23 L8 17.5 Z" fill="#f2b705" />
+  <!-- cap -->
+  <path d="M14.5 20 L29.5 20 L29.5 25.5 Q22 29.5 14.5 25.5 Z" fill="#d81f2a" />
+  <!-- tassel -->
+  <path d="M36 17.5 L36 27" stroke="#fbcf3b" stroke-width="1.4" stroke-linecap="round" />
+  <circle cx="36" cy="28" r="1.7" fill="#fbcf3b" />
+</svg>
