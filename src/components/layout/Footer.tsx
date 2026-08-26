@@ -3,6 +3,7 @@ import { company, contact, navLinks, socials } from "../../data/company";
 import { scrollToSection } from "../../lib/utils";
 import { Logo } from "../ui/Logo";
 import { Container } from "../ui/Container";
+import { Button } from "../ui/Button";
 
 const SERVICES = [
   "Study Abroad",
@@ -113,6 +114,16 @@ export function Footer() {
               </li>
             </ul>
             <p className="mt-4 text-xs text-mist-dim">{contact.hours}</p>
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              <Button
+                href={`tel:${contact.phoneIntl}`}
+                variant="outline-light"
+                size="sm"
+                className="px-4"
+              >
+                <Phone className="h-4 w-4" /> Call now
+              </Button>
+            </div>
           </div>
         </div>
       </Container>

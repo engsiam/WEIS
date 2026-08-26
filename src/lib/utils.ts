@@ -1,11 +1,25 @@
+import { getLenis } from "./lenis";
+
 export function cn(
   ...classes: Array<string | false | null | undefined>
 ): string {
   return classes.filter(Boolean).join(" ");
 }
 
+/**
+ * Scrolls to a section, preferring the Lenis smooth-scroll instance when
+ * available and falling back to native smooth scrolling otherwise. The offset
+ * keeps the fixed header from covering section headings.
+ */
 export function scrollToSection(id: string): void {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const target = document.getElementById(id);
+  if (!target) return;
+  const lenis = getLenis();
+  if (lenis) {
+    lenis.scrollTo(target, { offset: -80, duration: 1.3 });
+  } else {
+    target.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
 /**

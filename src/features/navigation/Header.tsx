@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Menu, Phone } from "lucide-react";
 import { useScrolled } from "../../hooks/useScrolled";
+import { useScrollDirection } from "../../hooks/useScrollDirection";
 import { useAppStore } from "../../store/useAppStore";
 import { cn, scrollToSection } from "../../lib/utils";
 import { contact, navLinks } from "../../data/company";
@@ -10,6 +11,7 @@ import { Button } from "../../components/ui/Button";
 
 export function Header() {
   const solid = useScrolled(24);
+  const compact = useScrollDirection(140);
   const activeSection = useAppStore((state) => state.activeSection);
   const toggleMobileNav = useAppStore((state) => state.toggleMobileNav);
   const openLeadModal = useAppStore((state) => state.openLeadModal);
@@ -19,15 +21,23 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-[60] transition-all duration-300",
         solid
-          ? "border-b border-line bg-paper/85 backdrop-blur-lg"
+          ? "border-b border-line bg-paper/85 shadow-card backdrop-blur-lg"
           : "border-b border-transparent"
       )}
     >
       <Container size="wide">
-        <div className="flex h-16 items-center justify-between gap-4 sm:h-18">
+        <div
+          className={cn(
+            "flex items-center justify-between gap-4 transition-all duration-300",
+            compact ? "h-14 sm:h-16" : "h-16 sm:h-18"
+          )}
+        >
           <button
             onClick={() => scrollToSection("hero")}
-            className="shrink-0 rounded-lg"
+            className={cn(
+              "shrink-0 rounded-lg transition-transform duration-300",
+              compact && "scale-95"
+            )}
             aria-label="WEIS — back to top"
           >
             <Logo tone={solid ? "light" : "dark"} />
@@ -64,6 +74,20 @@ export function Header() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            {/* Compact call icon — visible between sm and xl where the text
+               version is hidden */}
+            <a
+              href={`tel:${contact.phoneIntl}`}
+              aria-label="Call WEIS"
+              className={cn(
+                "hidden h-10 w-10 place-items-center rounded-full border transition-colors sm:grid xl:hidden",
+                solid
+                  ? "border-line text-navy hover:border-crimson hover:text-crimson"
+                  : "border-white/25 text-white hover:border-white/60"
+              )}
+            >
+              <Phone className="h-4 w-4" />
+            </a>
             <a
               href={`tel:${contact.phoneIntl}`}
               className={cn(

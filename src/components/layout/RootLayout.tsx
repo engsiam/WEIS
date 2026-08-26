@@ -7,6 +7,9 @@ import { MobileMenu } from "../../features/navigation/MobileMenu";
 import { LeadModal } from "../../features/lead/LeadModal";
 import { WhatsAppFab } from "../../features/lead/WhatsAppFab";
 import { Footer } from "./Footer";
+import { SmoothScroll } from "../animations/SmoothScroll";
+import { Preloader } from "../animations/Preloader";
+import { CursorGlow } from "../animations/CursorGlow";
 
 export function RootLayout() {
   useLeadPopup();
@@ -20,6 +23,10 @@ export function RootLayout() {
       >
         Skip to content
       </a>
+
+      <SmoothScroll />
+      <Preloader />
+      <CursorGlow />
 
       <Header />
       <MobileMenu />

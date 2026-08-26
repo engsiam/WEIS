@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "../../lib/utils";
 import { Reveal } from "./Reveal";
 import { SectionLabel } from "./SectionLabel";
+import { TextReveal } from "../animations/TextReveal";
 
 interface SectionHeadingProps {
   label?: string;
@@ -42,7 +43,11 @@ export function SectionHeading({
             align === "center" && "mx-auto max-w-3xl"
           )}
         >
-          {title}
+          {typeof title === "string" ? (
+            <TextReveal text={title} />
+          ) : (
+            title
+          )}
         </h2>
       </Reveal>
       {description && (

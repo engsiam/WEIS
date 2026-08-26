@@ -40,6 +40,8 @@
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
   --animate-marquee: marquee 42s linear infinite;
   --animate-marquee-slow: marquee 64s linear infinite;
+  --animate-drift: drift 18s ease-in-out infinite alternate;
+  --animate-drift-slow: drift 26s ease-in-out infinite alternate-reverse;
 }
 
 html {
@@ -82,6 +84,18 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* ── Lenis smooth-scroll integration ─────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 /* Dotted "world map" texture for dark hero / bands. */
 .world-dots {
   background-image: radial-gradient(
@@ -89,6 +103,15 @@ button:disabled {
     transparent 1.4px
   );
   background-size: 26px 26px;
+}
+
+/* Light counterpart — subtle navy dots on white stages. */
+.world-dots-dark {
+  background-image: radial-gradient(
+    rgb(11 29 58 / 0.07) 1.2px,
+    transparent 1.3px
+  );
+  background-size: 24px 24px;
 }
 
 /* Fine grid used behind dark sections. */
@@ -115,13 +138,110 @@ button:disabled {
   }
 }
 
+/* Ambient blob drift — extremely slow, GPU-only transforms. */
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(48px, -36px, 0) scale(1.14);
+  }
+}
+
+/* ── Hero world-map ambient loops ─────────────────────── */
+
+/* Flowing radar dashes along the flight routes. */
+@keyframes route-dash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+.route-flow {
+  animation: route-dash 5s linear infinite;
+}
+.route-flow-slow {
+  animation: route-dash 9s linear infinite reverse;
+}
+
+/* Wireframe globe — one lazy revolution. */
+@keyframes globe-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hero-globe {
+  animation: globe-spin 90s linear infinite;
+}
+
+/* Sonar pulses on origin/destination nodes. */
+@keyframes node-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  70%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.node-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-pulse 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.node-pulse-delayed {
+  animation-delay: 1.6s;
+}
+
+/* Comets travelling the flight paths (CSS motion path). */
+@keyframes flight {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+.flight-dot {
+  filter: drop-shadow(0 0 5px rgb(251 207 59 / 0.85));
+  animation: flight 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+.flight-dot-slow {
+  animation-duration: 11s;
+  animation-delay: 2.5s;
+  filter: drop-shadow(0 0 5px rgb(242 84 92 / 0.8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-globe,
+  .route-flow,
+  .route-flow-slow,
+  .node-pulse,
+  .node-pulse-delayed,
+  .flight-dot,
+  .flight-dot-slow {
+    animation: none !important;
+  }
+}
+
 .pause-on-hover:hover {
   animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
-  .animate-marquee-slow {
+  .animate-marquee-slow,
+  .animate-drift,
+  .animate-drift-slow {
     animation: none !important;
   }
 }

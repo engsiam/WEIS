@@ -10,6 +10,7 @@ import { TestimonialsSection } from "../components/sections/TestimonialsSection"
 import { FaqSection } from "../components/sections/FaqSection";
 import { CtaSection } from "../components/sections/CtaSection";
 import { ContactSection } from "../components/sections/ContactSection";
+import { OfficeSection } from "../components/sections/OfficeSection";
 
 export function HomePage() {
   return (
@@ -26,6 +27,7 @@ export function HomePage() {
       <FaqSection />
       <CtaSection />
       <ContactSection />
+      <OfficeSection />
     </>
   );
 }

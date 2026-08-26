@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import { Mail, MapPin, Phone, Sparkles, X } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, Sparkles, X } from "lucide-react";
 import { useAppStore } from "../../store/useAppStore";
 import { useLockBodyScroll } from "../../hooks/useLockBodyScroll";
 import { usePresence } from "../../hooks/usePresence";
@@ -102,14 +102,25 @@ function MobileMenuInner({
         </div>
 
         <nav className="flex flex-col px-3 py-3">
-          {navLinks.map((link) => (
-            <button
+          {navLinks.map((link, index) => (
+            <motion.button
               key={link.id}
               onClick={() => go(link.id)}
+              initial={{ opacity: 0, x: 28 }}
+              animate={
+                show
+                  ? { opacity: 1, x: 0 }
+                  : { opacity: 0, x: 28 }
+              }
+              transition={{
+                duration: 0.4,
+                ease: EASE_OUT_EXPO,
+                delay: show ? 0.12 + index * 0.05 : 0,
+              }}
               className="rounded-xl px-3 py-3 text-left font-display text-lg font-semibold text-ink transition-colors hover:bg-cloud hover:text-crimson"
             >
               {link.label}
-            </button>
+            </motion.button>
           ))}
         </nav>
 
@@ -131,6 +142,14 @@ function MobileMenuInner({
               className="flex items-center gap-3 hover:text-crimson"
             >
               <Phone className="h-4 w-4 text-crimson" /> {contact.phone}
+            </a>
+            <a
+              href={contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 hover:text-[#25D366]"
+            >
+              <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp us
             </a>
             <a
               href={`mailto:${contact.email}`}
