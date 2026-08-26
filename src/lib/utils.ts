@@ -28,6 +28,13 @@ export function scrollToSection(id: string): void {
  */
 export const WHATSAPP_NUMBER = "8801832166151";
 
+/**
+ * Canonical WhatsApp chat deep-link, used verbatim by every WhatsApp entry
+ * point on the site (header, footer, drawer, FAB, CTAs).
+ */
+export const WHATSAPP_CHAT_URL =
+  "https://wa.me/8801832166151?text=Hello%20WEIS%20%F0%9F%91%8B%20I'd%20like%20to%20know%20more%20about%20your%20study%20%2F%20work%20%2F%20migration%20services.";
+
 /** Build a wa.me deep link with a pre-filled, URL-encoded message. */
 export function buildWhatsAppUrl(
   message: string,

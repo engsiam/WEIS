@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Menu, Phone } from "lucide-react";
+import { Menu, MessageCircle, Phone } from "lucide-react";
 import { useScrolled } from "../../hooks/useScrolled";
 import { useScrollDirection } from "../../hooks/useScrollDirection";
 import { useAppStore } from "../../store/useAppStore";
@@ -73,35 +73,48 @@ export function Header() {
             })}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            {/* Compact call icon — visible between sm and xl where the text
-               version is hidden */}
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+            {/* Number tap → WhatsApp chat (works on desktop, where tel: is dead) */}
             <a
-              href={`tel:${contact.phoneIntl}`}
-              aria-label="Call WEIS"
+              href={contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Chat with WEIS on WhatsApp — ${contact.phone}`}
               className={cn(
                 "hidden h-10 w-10 place-items-center rounded-full border transition-colors sm:grid xl:hidden",
                 solid
-                  ? "border-line text-navy hover:border-crimson hover:text-crimson"
-                  : "border-white/25 text-white hover:border-white/60"
+                  ? "border-line text-navy hover:border-[#25D366] hover:text-[#25D366]"
+                  : "border-white/25 text-white hover:border-[#25D366] hover:text-[#25D366]"
               )}
             >
               <Phone className="h-4 w-4" />
             </a>
             <a
-              href={`tel:${contact.phoneIntl}`}
+              href={contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 "hidden items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold transition-colors xl:inline-flex",
-                solid ? "text-navy hover:text-crimson" : "text-white/85 hover:text-white"
+                solid ? "text-navy hover:text-[#25D366]" : "text-white/85 hover:text-[#25D366]"
               )}
             >
-              <Phone className="h-4 w-4" /> {contact.phone}
+              <MessageCircle className="h-4 w-4" /> {contact.phone}
+            </a>
+            {/* WhatsApp quick action — MOBILE ONLY (desktop uses the floating FAB) */}
+            <a
+              href={contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat with WEIS on WhatsApp"
+              className="grid h-9 w-9 place-items-center rounded-full border text-[#25D366] transition-colors hover:border-[#25D366] sm:hidden"
+            >
+              <MessageCircle className="h-4 w-4" />
             </a>
             <Button
               variant="crimson"
               size="sm"
               onClick={openLeadModal}
-              className="whitespace-nowrap px-3.5 sm:px-4"
+              className="whitespace-nowrap px-3 sm:px-4"
             >
               <span className="sm:hidden">Free check</span>
               <span className="hidden sm:inline">Free eligibility check</span>

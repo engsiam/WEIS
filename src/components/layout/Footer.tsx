@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { company, contact, navLinks, socials } from "../../data/company";
 import { scrollToSection } from "../../lib/utils";
 import { Logo } from "../ui/Logo";
@@ -96,7 +96,9 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href={`tel:${contact.phoneIntl}`}
+                  href={contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 text-mist-dim transition-colors hover:text-white"
                 >
                   <Phone className="h-4 w-4 shrink-0 text-crimson-soft" />
@@ -114,14 +116,15 @@ export function Footer() {
               </li>
             </ul>
             <p className="mt-4 text-xs text-mist-dim">{contact.hours}</p>
-            <div className="mt-5 flex flex-wrap gap-2.5">
+            <div className="mt-5 flex">
               <Button
-                href={`tel:${contact.phoneIntl}`}
-                variant="outline-light"
+                href={contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 size="sm"
-                className="px-4"
+                className="bg-[#25D366] px-4 text-white hover:bg-[#1fb857] hover:text-white"
               >
-                <Phone className="h-4 w-4" /> Call now
+                <MessageCircle className="h-4 w-4" /> WhatsApp — {contact.phone}
               </Button>
             </div>
           </div>

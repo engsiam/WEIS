@@ -81,7 +81,7 @@ export function Logo({ tone = "dark", showText = true, className }: LogoProps) {
   const wordColor = tone === "dark" ? "text-white" : "text-ink";
   const subColor = tone === "dark" ? "text-mist" : "text-slate";
   return (
-    <span className={cn("inline-flex items-center gap-2.5", className)}>
+    <span className={cn("inline-flex items-center gap-2", className)}>
       <LogoMark />
       {showText && (
         <span className="flex flex-col leading-none">

@@ -1,4 +1,4 @@
-import { buildWhatsAppUrl } from "../lib/utils";
+import { WHATSAPP_CHAT_URL } from "../lib/utils";
 import { FacebookIcon } from "../components/ui/icons";
 import type { NavLink, SocialLink } from "../types";
 
@@ -21,9 +21,7 @@ export const contact = {
   phone: "01832-166151",
   phoneIntl: "+8801832166151",
   whatsapp: "8801832166151",
-  whatsappUrl: buildWhatsAppUrl(
-    "Hello WEIS 👋 I'd like to know more about your study / work / migration services."
-  ),
+  whatsappUrl: WHATSAPP_CHAT_URL,
   email: "weisbd49@gmail.com",
   address: "House 54/A, 2nd Floor, Road-133, Gulshan-1, Dhaka-1212, Bangladesh",
   addressShort: "Gulshan-1, Dhaka",
