@@ -1,4 +1,5 @@
 import { HeroSection } from "../components/sections/HeroSection";
+import { CinematicJourney } from "../components/sections/CinematicJourney";
 import { TrustMarqueeSection } from "../components/sections/TrustMarqueeSection";
 import { ServicesSection } from "../components/sections/ServicesSection";
 import { DestinationsSection } from "../components/sections/DestinationsSection";
@@ -11,8 +12,11 @@ import { FaqSection } from "../components/sections/FaqSection";
 import { CtaSection } from "../components/sections/CtaSection";
 import { ContactSection } from "../components/sections/ContactSection";
 import { OfficeSection } from "../components/sections/OfficeSection";
+import { useAppStore } from "../store/useAppStore";
 
 export function HomePage() {
+  const openLeadModal = useAppStore((state) => state.openLeadModal);
+
   return (
     <>
       <HeroSection />
@@ -21,6 +25,7 @@ export function HomePage() {
       <DestinationsSection />
       <ProgramsSection />
       <WhyWeisSection />
+      <CinematicJourney onStart={openLeadModal} />
       <ProcessSection />
       <StatsSection />
       <TestimonialsSection />

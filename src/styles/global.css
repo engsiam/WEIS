@@ -114,6 +114,12 @@ html.lenis body {
   background-size: 24px 24px;
 }
 
+/* Outlined ghost typography (cinematic journey backdrop). */
+.stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(185 196 218 / 0.1);
+}
+
 /* Fine grid used behind dark sections. */
 .grid-lines {
   background-image:

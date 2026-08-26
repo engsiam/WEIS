@@ -1,11 +1,20 @@
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import type { Variants } from "motion/react";
+import type { MouseEvent as ReactMouseEvent } from "react";
 import { ArrowRight, BadgeCheck, Plane, Sparkles } from "lucide-react";
 import { EASE_OUT_EXPO } from "../../lib/motion";
 import { hasSeenIntro } from "../../lib/intro";
 import { scrollToSection } from "../../lib/utils";
 import { useAppStore } from "../../store/useAppStore";
+import { usePointerFine } from "../../hooks/usePointerFine";
 import { company } from "../../data/company";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
@@ -53,6 +62,27 @@ export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   /* First session visit → the intro veil plays; hold the entrance until it lifts. */
   const [introBase] = useState(() => (hasSeenIntro() ? 0 : 1.15));
+
+  /* 3D mouse tilt for the boarding pass (desktop pointers only). */
+  const pointerFine = usePointerFine();
+  const reduceMotion = useReducedMotion();
+  const rawRotX = useMotionValue(0);
+  const rawRotY = useMotionValue(0);
+  const tiltX = useSpring(rawRotX, { stiffness: 140, damping: 16, mass: 0.4 });
+  const tiltY = useSpring(rawRotY, { stiffness: 140, damping: 16, mass: 0.4 });
+
+  const handleTilt = (event: ReactMouseEvent<HTMLDivElement>) => {
+    if (!pointerFine || reduceMotion) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width - 0.5;
+    const py = (event.clientY - rect.top) / rect.height - 0.5;
+    rawRotY.set(px * 10);
+    rawRotX.set(-py * 8);
+  };
+  const resetTilt = () => {
+    rawRotX.set(0);
+    rawRotY.set(0);
+  };
 
   /* Scroll-linked parallax — background drifts down, foreground lifts. */
   const { scrollYProgress } = useScroll({
@@ -189,8 +219,13 @@ export function HeroSection() {
             </motion.ul>
           </div>
 
-          {/* Right — boarding-pass visual (parallax wrapper + entrance) */}
-          <motion.div style={{ y: visualY }} className="md:block">
+          {/* Right — boarding-pass visual (parallax + 3D tilt + entrance) */}
+          <motion.div
+            style={{ y: visualY }}
+            onMouseMove={handleTilt}
+            onMouseLeave={resetTilt}
+            className="hidden md:block"
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.92, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -199,13 +234,21 @@ export function HeroSection() {
                 ease: EASE_OUT_EXPO,
                 delay: introBase + 0.55,
               }}
-              className="relative mx-auto hidden w-full max-w-md md:block"
+              className="relative mx-auto w-full max-w-md [perspective:1100px]"
             >
+              <motion.div
+                style={{
+                  rotateX: tiltX,
+                  rotateY: tiltY,
+                  transformStyle: "preserve-3d",
+                }}
+                className="relative will-change-transform"
+              >
             <PassportStamp
               label="VISA"
               sub="APPROVED"
               rotate={-14}
-              className="absolute -left-5 -top-6 z-20"
+              className="absolute -left-5 -top-6 z-20 [transform:rotate(-14deg)_translateZ(50px)]"
             />
 
             <motion.div
@@ -281,13 +324,14 @@ export function HeroSection() {
             <FlagChip
               flag="🇨🇦"
               label="Canada"
-              className="absolute -right-4 top-1/3 z-20 shadow-lift"
+              className="absolute -right-4 top-1/3 z-20 shadow-lift [transform:translateZ(60px)]"
             />
             <FlagChip
               flag="🇲🇾"
               label="Malaysia"
-              className="absolute -bottom-4 left-6 z-20 shadow-lift"
+              className="absolute -bottom-4 left-6 z-20 shadow-lift [transform:translateZ(45px)]"
             />
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
