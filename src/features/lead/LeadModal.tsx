@@ -359,7 +359,7 @@ function LeadModalInner({
         <div className="h-1.5 w-full bg-gradient-to-r from-crimson via-gold to-royal" />
 
         {/* Header */}
-        <div className="flex items-start justify-between gap-4 px-6 pt-5">
+        <div className="flex items-start justify-between gap-4 px-5 pt-5 sm:px-6">
           <div className="flex items-center gap-3">
             <Logo tone="light" showText={false} />
             <div>
@@ -382,7 +382,7 @@ function LeadModalInner({
         </div>
 
         {/* Progress */}
-        <div className="px-6 pt-4">
+        <div className="px-5 pt-4 sm:px-6">
           <div className="h-1.5 w-full overflow-hidden rounded-full bg-cloud">
             <div
               className="h-full rounded-full bg-crimson transition-all duration-500 ease-out"
@@ -397,7 +397,7 @@ function LeadModalInner({
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-6 pb-6 pt-5">
+        <div className="flex-1 overflow-y-auto px-5 pb-6 pt-5 sm:px-6">
           {result ? (
             <LeadResultView
               result={result}
@@ -656,7 +656,7 @@ function LeadModalInner({
 
         {/* Footer (wizard only) */}
         {!result && (
-          <div className="flex items-center justify-between gap-3 border-t border-line px-6 py-4">
+          <div className="flex items-center justify-between gap-3 border-t border-line px-5 py-4 sm:px-6">
             {stepIndex > 0 ? (
               <button
                 type="button"

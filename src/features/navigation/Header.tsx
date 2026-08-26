@@ -27,7 +27,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between gap-4 sm:h-18">
           <button
             onClick={() => scrollToSection("hero")}
-            className="rounded-lg"
+            className="shrink-0 rounded-lg"
             aria-label="WEIS — back to top"
           >
             <Logo tone={solid ? "light" : "dark"} />
@@ -63,7 +63,7 @@ export function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <a
               href={`tel:${contact.phoneIntl}`}
               className={cn(
@@ -77,9 +77,10 @@ export function Header() {
               variant="crimson"
               size="sm"
               onClick={openLeadModal}
-              className="hidden sm:inline-flex"
+              className="whitespace-nowrap px-3.5 sm:px-4"
             >
-              Free eligibility check
+              <span className="sm:hidden">Free check</span>
+              <span className="hidden sm:inline">Free eligibility check</span>
             </Button>
             <button
               onClick={toggleMobileNav}

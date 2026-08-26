@@ -24,7 +24,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[92vh] items-center overflow-hidden bg-navy pb-16 pt-28 text-white sm:pt-32"
+      className="relative flex min-h-[92svh] items-center overflow-hidden bg-navy pb-16 pt-28 text-white sm:pt-32"
     >
       {/* Background layers */}
       <div className="world-dots absolute inset-0 opacity-70" aria-hidden="true" />
@@ -79,13 +79,19 @@ export function HeroSection() {
               variants={fadeUp}
               className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
-              <Button variant="crimson" size="lg" onClick={openLeadModal}>
+              <Button
+                variant="crimson"
+                size="lg"
+                onClick={openLeadModal}
+                className="w-full justify-center px-6 sm:w-auto sm:px-8"
+              >
                 <Sparkles className="h-5 w-5" /> Check your eligibility — free
               </Button>
               <Button
                 variant="outline-light"
                 size="lg"
                 onClick={() => scrollToSection("services")}
+                className="w-full justify-center px-6 sm:w-auto sm:px-8"
               >
                 Explore services <ArrowRight className="h-5 w-5" />
               </Button>

@@ -80,7 +80,7 @@ export function ContactForm() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
-        className="flex flex-col items-center rounded-3xl border border-line bg-white p-8 text-center shadow-card"
+        className="flex flex-col items-center rounded-2xl bg-cloud/60 p-6 text-center sm:p-8"
       >
         <span className="grid h-14 w-14 place-items-center rounded-full bg-crimson/10 text-crimson">
           <CheckCircle2 className="h-7 w-7" />
@@ -116,11 +116,7 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      noValidate
-      className="rounded-3xl border border-line bg-white p-6 shadow-card sm:p-8"
-    >
+    <form onSubmit={handleSubmit} noValidate>
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-1.5 block text-sm font-semibold text-ink">
@@ -252,16 +248,13 @@ export function ContactForm() {
         </p>
       )}
 
-      <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
-        <p className="text-xs text-slate">
-          We reply within one business day · your details stay private.
-        </p>
+      <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row-reverse sm:justify-start sm:gap-4">
         <Button
           type="submit"
           variant="crimson"
           size="lg"
           disabled={status === "submitting"}
-          className="w-full sm:w-auto"
+          className="w-full shrink-0 whitespace-nowrap sm:w-auto"
         >
           {status === "submitting" ? (
             <>
@@ -273,6 +266,9 @@ export function ContactForm() {
             </>
           )}
         </Button>
+        <p className="text-center text-xs text-slate sm:text-left">
+          We reply within one business day · your details stay private.
+        </p>
       </div>
     </form>
   );

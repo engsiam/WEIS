@@ -113,7 +113,7 @@ function MobileMenuInner({
           ))}
         </nav>
 
-        <div className="mt-auto border-t border-line px-5 py-5">
+        <div className="mt-auto border-t border-line px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-5">
           <Button
             variant="crimson"
             fullWidth
@@ -134,7 +134,7 @@ function MobileMenuInner({
             </a>
             <a
               href={`mailto:${contact.email}`}
-              className="flex items-center gap-3 hover:text-crimson"
+              className="flex min-w-0 items-center gap-3 break-all hover:text-crimson"
             >
               <Mail className="h-4 w-4 text-crimson" /> {contact.email}
             </a>

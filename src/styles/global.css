@@ -70,6 +70,18 @@ body {
   border-radius: 3px;
 }
 
+/* Tailwind v4 preflight resets buttons to `cursor: default`; restore the hand
+   pointer for every interactive control, including the header nav buttons. */
+a,
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 /* Dotted "world map" texture for dark hero / bands. */
 .world-dots {
   background-image: radial-gradient(

@@ -1,6 +1,8 @@
+import { useId } from "react";
 import { cn } from "../../lib/utils";
 
 function LogoMark() {
+  const gradientId = useId();
   return (
     <svg
       width="40"
@@ -12,7 +14,7 @@ function LogoMark() {
     >
       <defs>
         <linearGradient
-          id="weis-badge"
+          id={gradientId}
           x1="4"
           y1="4"
           x2="40"
@@ -23,7 +25,7 @@ function LogoMark() {
           <stop offset="1" stopColor="#0b1d3a" />
         </linearGradient>
       </defs>
-      <rect x="2.5" y="2.5" width="39" height="39" rx="12" fill="url(#weis-badge)" />
+      <rect x="2.5" y="2.5" width="39" height="39" rx="12" fill={`url(#${gradientId})`} />
       <rect
         x="2.5"
         y="2.5"
@@ -93,7 +95,7 @@ export function Logo({ tone = "dark", showText = true, className }: LogoProps) {
           </span>
           <span
             className={cn(
-              "mt-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.2em]",
+              "mt-0.5 hidden text-[0.58rem] font-semibold uppercase tracking-[0.2em] sm:block",
               subColor
             )}
           >

@@ -16,7 +16,7 @@ export function ProcessSection() {
 
         <div className="relative mt-14">
           <div
-            className="absolute left-0 right-0 top-8 hidden h-px bg-line lg:block"
+            className="absolute left-[10%] right-[10%] top-8 hidden h-px bg-line lg:block"
             aria-hidden="true"
           />
           <RevealGroup
