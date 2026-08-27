@@ -6,7 +6,6 @@ import { useAppStore } from "../../store/useAppStore";
 import { cn, scrollToSection } from "../../lib/utils";
 import { contact, navLinks } from "../../data/company";
 import { Container } from "../../components/ui/Container";
-import { Logo } from "../../components/ui/Logo";
 import { Button } from "../../components/ui/Button";
 
 export function Header() {
@@ -40,8 +39,11 @@ export function Header() {
             )}
             aria-label="WEIS — back to top"
           >
-            {/* <Logo tone={solid ? "light" : "dark"} /> */}
-            <img src="/logo.png" alt="WEIS Logo" className="h-35 w-auto" />
+            <img
+              src={solid ? "/logo.png" : "/white-logo.png"}
+              alt="WEIS Logo"
+              className="h-35 w-auto transition-opacity duration-300"
+            />
           </button>
 
           <nav className="hidden items-center gap-7 lg:flex">

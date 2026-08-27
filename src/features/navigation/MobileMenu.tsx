@@ -7,7 +7,6 @@ import { usePresence } from "../../hooks/usePresence";
 import { EASE_OUT_EXPO } from "../../lib/motion";
 import { scrollToSection } from "../../lib/utils";
 import { contact, navLinks, socials } from "../../data/company";
-import { Logo } from "../../components/ui/Logo";
 import { Button } from "../../components/ui/Button";
 
 function MobileMenuInner({
