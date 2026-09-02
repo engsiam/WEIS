@@ -86,7 +86,7 @@ function ServiceCard({
       <article
         onMouseMove={trackPointer}
         className={cn(
-          "group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift",
+          "group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift",
           theme.ring
         )}
       >
@@ -113,62 +113,80 @@ function ServiceCard({
           className="pointer-events-none absolute -left-full top-0 h-full w-1/2 -rotate-12 bg-gradient-to-r from-transparent via-white/60 to-transparent transition-[left] duration-[900ms] ease-out group-hover:left-[170%]"
         />
 
-        {/* Ghost numeral — fully contained, no bleed */}
-        <span
-          aria-hidden="true"
-          className={cn(
-            "pointer-events-none absolute right-6 top-6 select-none font-display text-4xl font-extrabold leading-none text-navy/[0.06] transition-colors duration-500",
-            theme.ghost
-          )}
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
+        {/* ── Cover image ─────────────────────────────────── */}
+        <div className="relative h-40 shrink-0 overflow-hidden">
+          <img
+            src={service.image}
+            alt={service.title}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+          />
+          {/* Soft gradient — keeps the image visible, not text-heavy */}
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-midnight/55 via-midnight/15 to-transparent"
+          />
+          {/* Ghost numeral on the image */}
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute right-5 top-3 select-none font-display text-4xl font-extrabold leading-none text-white/20 transition-colors duration-500 group-hover:text-white/35"
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
 
-        {/* Gradient icon tile */}
-        <span
-          className={cn(
-            "relative flex h-12 w-12 items-center justify-center rounded-xl shadow-md transition-transform duration-500 ease-out group-hover:-rotate-3 group-hover:scale-105",
-            theme.tile
-          )}
-        >
-          <Icon className="h-6 w-6" />
-        </span>
-
-        <h3 className="relative mt-5 font-display text-lg font-bold text-ink">
-          {service.title}
-        </h3>
-        <span
-          className={cn(
-            "relative mt-2 inline-flex w-fit rounded-full px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.08em]",
-            theme.pill
-          )}
-        >
-          {service.tagline}
-        </span>
-        <p className="relative mt-3 text-sm leading-relaxed text-slate">
-          {service.description}
-        </p>
-
-        <ul className="relative mt-4 flex flex-col gap-2 border-t border-dashed border-line pt-4">
-          {service.points.map((point) => (
-            <li key={point} className="flex items-start gap-2.5 text-sm text-ink">
+        {/* Card body */}
+        <div className="flex min-w-0 flex-1 flex-col px-5 pb-4">
+          {/* Icon tile overlaps the cover — title sits beside it */}
+          <div className="relative flex items-center gap-3">
+            <span
+              className={cn(
+                "relative z-10 -mt-6 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl shadow-lg ring-4 ring-white transition-transform duration-500 ease-out group-hover:-rotate-3 group-hover:scale-105",
+                theme.tile
+              )}
+            >
+              <Icon className="h-5 w-5" />
+            </span>
+            <div className="min-w-0 pt-3">
+              <h3 className="truncate font-display text-lg font-bold leading-tight text-ink">
+                {service.title}
+              </h3>
               <span
                 className={cn(
-                  "mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-cloud",
+                  "mt-0.5 block whitespace-nowrap text-[0.6rem] font-bold uppercase tracking-[0.12em]",
                   theme.check
                 )}
               >
-                <Check className="h-3 w-3" />
+                {service.tagline}
               </span>
-              {point}
-            </li>
-          ))}
-        </ul>
+            </div>
+          </div>
+
+          <p className="relative mt-2.5 line-clamp-2 text-[0.8rem] leading-relaxed text-slate">
+            {service.description}
+          </p>
+
+          <ul className="relative mt-2.5 flex flex-col gap-1 border-t border-dashed border-line pt-2.5">
+            {service.points.map((point) => (
+              <li key={point} className="flex items-start gap-2 text-[0.8rem] text-ink">
+                <span
+                  className={cn(
+                    "mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-cloud",
+                    theme.check
+                  )}
+                >
+                  <Check className="h-2.5 w-2.5" />
+                </span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <button
           type="button"
           onClick={onStart}
-          className="relative mt-auto flex w-full items-center justify-between gap-3 pt-6 text-left"
+          className="relative mx-5 mb-4 mt-auto flex w-[calc(100%-2.5rem)] items-center justify-between gap-3 border-t border-dashed border-line pt-3 text-left"
         >
           <span className="text-sm font-bold text-navy transition-colors duration-300 group-hover:text-crimson">
             Start this route

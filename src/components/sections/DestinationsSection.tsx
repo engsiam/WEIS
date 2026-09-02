@@ -23,83 +23,91 @@ function DestinationCard({
   index: number;
 }) {
   return (
-    <div
+    <article
       className={
-        "group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-panel " +
+        "group relative flex h-full min-h-[23rem] flex-col justify-end overflow-hidden rounded-[1.75rem] border transition-all duration-500 hover:-translate-y-2 hover:shadow-panel " +
         (destination.featured
-          ? "border-crimson/25 shadow-lift hover:border-crimson/50"
-          : "border-line shadow-card hover:border-crimson/30")
+          ? "border-crimson/30 shadow-lift hover:border-crimson/60"
+          : "border-line shadow-card hover:border-crimson/40")
       }
     >
-      {/* Accent hairline */}
-      <span
-        aria-hidden="true"
-        className={
-          "absolute inset-x-0 top-0 h-1 bg-gradient-to-r transition-opacity duration-500 " +
-          (destination.featured
-            ? "from-crimson via-crimson-soft to-gold opacity-100"
-            : "from-navy to-royal opacity-0 group-hover:opacity-60")
-        }
+      {/* Country backdrop image */}
+      <img
+        src={destination.image}
+        alt={destination.country}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
       />
-      {/* Warm tint on hover */}
+      {/* Cinematic overlay for legibility */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-crimson/[0.05] via-transparent to-gold/[0.08] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/45 to-midnight/[0.06]"
+      />
+      {/* Warm accent tint on hover */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-crimson/20 via-transparent to-gold/25 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       />
       {/* Sheen sweep */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -left-full top-0 h-full w-1/2 -rotate-12 bg-gradient-to-r from-transparent via-gold/10 to-transparent transition-[left] duration-[900ms] ease-out group-hover:left-[160%]"
+        className="pointer-events-none absolute -left-full top-0 h-full w-1/2 -rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-[left] duration-[900ms] ease-out group-hover:left-[160%]"
       />
       {/* Ghost index numeral */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -right-2 -top-4 font-display text-8xl font-extrabold leading-none text-navy/[0.05] transition-colors duration-500 group-hover:text-crimson/[0.08]"
+        className="pointer-events-none absolute -top-2 right-4 select-none font-display text-8xl font-extrabold leading-none text-white/[0.12] transition-colors duration-500 group-hover:text-white/25"
       >
         {String(index + 1).padStart(2, "0")}
       </span>
 
-      <div className="relative flex items-start justify-between">
+      {/* Flag + featured badge */}
+      <div className="absolute inset-x-6 top-6 flex items-start justify-between">
         <span
-          className="inline-block text-5xl drop-shadow-sm transition-transform duration-500 ease-out group-hover:-rotate-6 group-hover:scale-110"
+          className="inline-block text-5xl font-bold text-white drop-shadow-lg transition-transform duration-500 ease-out group-hover:-rotate-6 group-hover:scale-110"
           aria-hidden="true"
         >
           {destination.flag}
         </span>
         {destination.featured && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-crimson/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-crimson">
+          <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-white backdrop-blur-md">
             <Star className="h-3 w-3" /> Featured
           </span>
         )}
       </div>
 
-      <h3 className="relative mt-5 font-display text-2xl font-bold text-ink">
-        {destination.country}
-      </h3>
-      <p className="relative mt-1 text-sm font-semibold text-crimson">
-        {destination.headline}
-      </p>
-      <p className="relative mt-3 flex-1 text-sm leading-relaxed text-slate">
-        {destination.note}
-      </p>
+      {/* Content pinned to the bottom */}
+      <div className="relative p-7 pt-4">
+        <p className="text-[0.65rem] font-bold uppercase tracking-[0.15em] text-gold-soft">
+          {destination.headline}
+        </p>
+        <h3 className="mt-1 font-display text-2xl font-bold text-white">
+          {destination.country}
+        </h3>
+        <p className="mt-2 text-sm font-bold leading-relaxed text-white">
+          {destination.note}
+        </p>
 
-      <div className="relative mt-5 flex flex-wrap gap-2">
-        {destination.tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full bg-cloud px-3 py-1 text-xs font-medium text-slate transition-colors duration-300 group-hover:bg-navy group-hover:text-white"
-          >
-            {tag}
+        <div className="mt-4 flex flex-wrap gap-2">
+          {destination.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-md transition-colors duration-300 group-hover:border-crimson/50"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Hover affordance — arrow glides forward */}
+        <div className="mt-5 flex items-center gap-2 text-sm font-bold text-white">
+          Explore routes
+          <span className="grid h-7 w-7 place-items-center rounded-full bg-white/15 text-white backdrop-blur-md transition-colors duration-300 group-hover:bg-crimson">
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </span>
-        ))}
+        </div>
       </div>
-
-      {/* Hover affordance — arrow glides forward */}
-      <div className="relative mt-6 flex items-center gap-2 text-sm font-bold text-navy">
-        Explore routes
-        <ArrowRight className="h-4 w-4 text-crimson transition-transform duration-300 group-hover:translate-x-2" />
-      </div>
-    </div>
+    </article>
   );
 }
 
@@ -223,7 +231,7 @@ export function DestinationsSection() {
               <p className="hidden max-w-[15rem] pb-1 text-right text-sm leading-relaxed text-slate xl:block">
                 Keep scrolling — the world moves sideways.
                 <span className="mt-2 block font-display text-xs font-bold uppercase tracking-[0.18em] text-mist-dim">
-                  9 routes · one dedicated team
+                  7 routes · one dedicated team
                 </span>
               </p>
             </div>
@@ -265,7 +273,7 @@ export function DestinationsSection() {
         <SectionHeading
           label="Where you can go"
           title="Top destinations, honestly matched"
-          description="From MOI-friendly Canada to Malaysia's calling-visa jobs — we point you to the routes that genuinely fit your profile and budget."
+          description="From Portugal's work permits to the USA EB-3 and Malaysia's calling-visa jobs — we point you to the routes that genuinely fit your profile and budget."
         />
         <div className="mt-14 grid gap-5 sm:grid-cols-2">
           {destinations.map((destination, index) => (

@@ -20,7 +20,7 @@ const EMPTY: EnquiryFormData = {
 const SERVICE_OPTIONS = [
   "Study Abroad",
   "Work Visa",
-  "Migration & PR",
+  "IELTS",
   "Tours & Visit Visa",
   "Not sure yet",
 ];
