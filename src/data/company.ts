@@ -23,8 +23,8 @@ export const contact = {
   whatsapp: "8801832166151",
   whatsappUrl: WHATSAPP_CHAT_URL,
   email: "weisbd49@gmail.com",
-  address: "House 54/A, 2nd Floor, Road-133, Gulshan-1, Dhaka-1212, Bangladesh",
-  addressShort: "Gulshan-1, Dhaka",
+  address: "558 Myrtle Avenue, Albany, New York, 11208",
+  addressShort: "Albany, New York",
   hours: "Saturday – Thursday · 10:00 AM – 7:00 PM",
   facebook: "https://www.facebook.com/WEIS18",
 } as const;
