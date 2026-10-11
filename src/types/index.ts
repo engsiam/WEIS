@@ -13,7 +13,7 @@ export interface SocialLink {
 
 /* ── Services ─────────────────────────────────────────── */
 
-export type ServiceId = "study" | "work" | "migration" | "tours";
+export type ServiceId = "study" | "work" | "ielts" | "tours";
 export type Accent = "crimson" | "gold" | "royal" | "navy";
 
 export interface Service {
@@ -24,6 +24,7 @@ export interface Service {
   points: string[];
   icon: LucideIcon;
   accent: Accent;
+  image: string;
 }
 
 /* ── Destinations ─────────────────────────────────────── */
@@ -36,6 +37,7 @@ export interface Destination {
   note: string;
   tags: string[];
   featured?: boolean;
+  image: string;
 }
 
 /* ── Featured programs (campaigns) ────────────────────── */

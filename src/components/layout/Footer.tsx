@@ -8,7 +8,7 @@ import { Button } from "../ui/Button";
 const SERVICES = [
   "Study Abroad",
   "Work Visa",
-  "Migration & PR",
+  "IELTS",
   "Tours & Visit Visa",
 ];
 

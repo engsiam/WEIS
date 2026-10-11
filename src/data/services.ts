@@ -1,13 +1,18 @@
-import { GraduationCap, Briefcase, BadgeCheck, Palmtree } from "lucide-react";
+import {
+  GraduationCap,
+  Briefcase,
+  Languages,
+  Palmtree,
+} from "lucide-react";
 import type { Service } from "../types";
 
 export const services: Service[] = [
   {
     id: "study",
     title: "Study Abroad",
-    tagline: "Universities & colleges worldwide",
+    tagline: "Worldwide universities",
     description:
-      "From course selection and admission to the student visa — we match your profile to the right institution and country, including MOI-friendly routes.",
+      "From course selection to visa stamping — matched to the right institution and country, including MOI-friendly routes.",
     points: [
       "University & course shortlisting",
       "Admission & scholarship support",
@@ -15,13 +20,14 @@ export const services: Service[] = [
     ],
     icon: GraduationCap,
     accent: "royal",
+    image: "/images/study-abroad.jpg",
   },
   {
     id: "work",
     title: "Work Visa",
-    tagline: "Legal jobs & work permits",
+    tagline: "Legal jobs & permits",
     description:
-      "Genuine, contract-based work opportunities abroad — including the Malaysia Calling Visa 2026 — with clear terms on salary, overtime and insurance.",
+      "Genuine contract-based jobs abroad — including the Malaysia Calling Visa 2026 — with clear salary and insurance terms.",
     points: [
       "Verified employers & job categories",
       "Work permit & calling-visa processing",
@@ -29,27 +35,29 @@ export const services: Service[] = [
     ],
     icon: Briefcase,
     accent: "crimson",
+    image: "/images/work-visa-portugal.jpg",
   },
   {
-    id: "migration",
-    title: "Migration & PR",
-    tagline: "Permanent residency pathways",
+    id: "ielts",
+    title: "IELTS",
+    tagline: "Band 7+ preparation",
     description:
-      "Skilled, family and investor migration to Canada, Australia and beyond — with an honest eligibility assessment before you commit a single taka.",
+      "Expert training with mock tests, band-score assessment and one-to-one coaching for all four modules.",
     points: [
-      "Points-based eligibility check",
-      "Skilled & family sponsorship",
-      "End-to-end PR application",
+      "Mock tests with band assessment",
+      "Speaking & writing coaching",
+      "BC & IDP registration support",
     ],
-    icon: BadgeCheck,
+    icon: Languages,
     accent: "gold",
+    image: "/images/ielts.jpg",
   },
   {
     id: "tours",
     title: "Tours & Visit Visa",
-    tagline: "Holidays & tourist visas",
+    tagline: "Holidays & visit visas",
     description:
-      "Tourist, business and family-visit visas plus curated tour packages — with strong, well-prepared applications that stand up at the embassy.",
+      "Tourist, business and family-visit visas plus curated tour packages — applications that stand up at the embassy.",
     points: [
       "Tourist & business visit visas",
       "Itinerary & booking support",
@@ -57,5 +65,6 @@ export const services: Service[] = [
     ],
     icon: Palmtree,
     accent: "navy",
+    image: "/images/tours.jpg",
   },
 ];
